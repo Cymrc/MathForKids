@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A perfectly debugged, highly responsive math practice application for kids with audio, animations, a reactable mascot fallback, and educational hints.">
+  <title>Math for Kids – Interactive Practice Game</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@400..700&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Floating Background Elements -->
+  <div class="bg-decoration float-1" aria-hidden="true">➕</div>
+  <div class="bg-decoration float-2" aria-hidden="true">➖</div>
+  <div class="bg-decoration float-3" aria-hidden="true">✖️</div>
+  <div class="bg-decoration float-4" aria-hidden="true">➗</div>
+  <div class="bg-decoration float-5" aria-hidden="true">⭐</div>
+  <div class="bg-decoration float-6" aria-hidden="true">🎈</div>
+
+  <!-- Success Celebration Overlay -->
+  <div id="celebration-overlay" class="celebration-overlay"></div>
+
+  <!-- Audio Elements -->
+  <audio id="audio-correct" src="correct.mp3" preload="auto"></audio>
+  <audio id="audio-correct-2" src="correct2.mp3"></audio>
+  <audio id="audio-wrong" src="wrong.mp3" preload="auto"></audio>
+  <audio id="audio-wrong2" src="wrong2.mp3" preload="auto"></audio>
+
+  <div class="app-container">
+    <!-- Header Card -->
+    <header class="app-header glass-card">
+      <div class="header-main">
+        <h1 class="logo-text"><span>Math</span> Adventures 🚀</h1>
+        <p class="subtitle-text">Master Math with Fun! 🎉</p>
+      </div>
+      
+      <!-- Gamification score/streak HUD -->
+      <div class="hud-container">
+        <div class="hud-pill score-badge">
+          <span class="pill-label">Score</span>
+          <span class="pill-val" id="score-counter">0</span>
+        </div>
+        <div class="hud-pill streak-badge">
+          <span class="pill-label">Streak 🔥</span>
+          <span class="pill-val" id="streak-counter">0</span>
+        </div>
+      </div>
+
+      <!-- Star Reward Display -->
+      <div class="stars-bar" id="stars-bar" aria-label="Star Rewards"></div>
+    </header>
+
+    <main class="game-main-content">
+      <!-- Operator Selection Grid -->
+      <section class="operator-section glass-card" aria-label="Math Operators">
+        <h2 class="section-title">Choose Operator:</h2>
+        <div class="operator-selector-grid" role="radiogroup" aria-label="Operators">
+          <button class="op-btn op-add active" id="op-add" role="radio" aria-checked="true" data-operator="add" title="Addition">+</button>
+          <button class="op-btn op-sub" id="op-sub" role="radio" aria-checked="false" data-operator="sub" title="Subtraction">−</button>
+          <button class="op-btn op-mul" id="op-mul" role="radio" aria-checked="false" data-operator="mul" title="Multiplication">×</button>
+          <button class="op-btn op-div" id="op-div" role="radio" aria-checked="false" data-operator="div" title="Division">÷</button>
+          <button class="op-btn op-rand" id="op-rand" role="radio" aria-checked="false" data-operator="random" title="Random">🎲</button>
+        </div>
+      </section>
+
+      <!-- Main Game Board Card -->
+      <section class="problem-section glass-card" aria-label="Math Question Board">
+        <!-- Mascot Wrapper (with Speech Bubble) -->
+        <div class="mascot-display-wrapper">
+          <div class="speech-bubble" id="mascot-speech">Let's play! 🦁</div>
+          
+          <!-- Mascot box -->
+          <div class="mascot-container" id="mascot-box">
+            <img src="lion.png" id="mascot-img" alt="Lion Mascot Buddy" class="mascot-avatar" onerror="this.style.display='none'; document.getElementById('mascot-fallback').classList.remove('hidden');">
+            <span id="mascot-fallback" class="mascot-emoji hidden">🦁</span>
+          </div>
+        </div>
+
+        <!-- Math Problem Row -->
+        <div class="equation-box">
+          <div class="equation" id="equation-display">
+            <span class="num" id="num-1">5</span>
+            <span class="operator" id="op-display">+</span>
+            <span class="num" id="num-2">3</span>
+            <span class="equals">=</span>
+            <div class="input-wrapper">
+              <input type="number" id="answer-input" autocomplete="off" placeholder="?" aria-label="Answer input" autofocus>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hint Action Button -->
+        <div class="hint-action-container">
+          <button id="btn-hint" class="action-btn hint-btn">💡 Hint</button>
+        </div>
+
+        <!-- Feedback Alert Messages -->
+        <div class="feedback-container">
+          <p id="feedback-message" class="feedback-text hidden"></p>
+        </div>
+
+        <!-- Action Area Grid -->
+        <div class="actions-section" aria-label="Game Controls">
+          <button id="btn-check" class="action-btn check-btn">CHECK 🎯</button>
+          <button id="btn-generate" class="action-btn generate-btn">GENERATE 🎲</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Made with ❤️ for young learners. Volume on for audio rewards! 🔊</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
