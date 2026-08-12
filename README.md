@@ -100,15 +100,10 @@ git clone https://github.com/yourusername/math-adventures.git
 
 ### 2. Open the project
 
-Simply open:
+Launch the game:
+Simply double-click or open index.html in any web browser.
 
-```
-index.html
-```
-
-in your preferred web browser.
-
-No installation or dependencies are required.
+Alternatively, play directly online at cymrc.github.io/MathForKids.
 
 ---
 
