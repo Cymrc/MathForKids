@@ -103,7 +103,7 @@ git clone https://github.com/yourusername/math-adventures.git
 Launch the game:
 Simply double-click or open index.html in any web browser.
 
-Alternatively, play directly online at cymrc.github.io/MathForKids.
+Alternatively, play directly online at [cymrc.github.io/MathForKids.](https://cymrc.github.io/MathForKids/)
 
 ---
 
